@@ -1,0 +1,23 @@
+services:
+  django:
+    image: sumitjain12june/django-app:latest
+    container_name: django_app
+    expose:
+      - "8000"
+
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/ping" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - django
