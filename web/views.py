@@ -1,6 +1,4 @@
-import time
-
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -8,8 +6,3 @@ from django.shortcuts import render
 
 def home(request):
     return HttpResponse("Hello Django 👋, Testing CICD Pipeline!")
-
-
-def ping(args):
-    time.sleep(6)  # healthcheck timeout = 5s
-    return JsonResponse({"status": "ok"})

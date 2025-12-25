@@ -1,11 +1,7 @@
-import time
-
-from django.http import JsonResponse
 from django.urls import path
 
-from web.views import home, ping
+from web.views import home
 
 urlpatterns = [
     path('', home),
-    path('ping', ping)
 ]
